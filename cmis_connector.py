@@ -12,7 +12,7 @@ def changeUrl(singleChild):
     needle = 'needle'
     # Get the field
     properties = singleChild.getProperties()
-    field = properties['fr:campo']
+    field = properties[cmisField]
     print(field)
 
     if( needle in field and newOne not in field):
@@ -20,7 +20,7 @@ def changeUrl(singleChild):
         position = field.find(toCheck)
         newUrl = field[:position] + newOne + field[position:]
         print ('New field: %s', newUrl)
-        newField = {'fr:campo' : newUrl}
+        newField = {cmisField : newUrl}
         singleChild.updateProperties(newField)
         print("Done")
         
