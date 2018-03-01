@@ -67,11 +67,11 @@ def main():
 
         print(repo)
         # Query folder 
-        robotResults = repo.getObjectByPath(folder)
+        repoResults = repo.getObjectByPath(folder)
 
         print ('Looking inside %s folder' , folder)
         # Print name of contents in folder
-        children = robotResults.getChildren()
+        children = repoResults.getChildren()
 
         if not children:
             print ("Error while retrying results! Exiting...")
