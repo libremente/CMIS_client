@@ -1,23 +1,23 @@
 # Python CMIS Client
-This CMIS client is used to quickly access and perform some operations a CMIS
-endpoint. 
+This CMIS client is used to quickly access a CMIS
+endpoint and perform some CRUD actions on top of it. 
 
 ## How To
 * Clone this repo.
-* `virtualenv cmis_client`
-* `source cmis_clien/bin/activate`
-* `pip install cmislib`
-* Modify the settings file with the following pattern:
+* `virtualenv .venv` or use the wrapper
+* `source .venv/bin/activate`
+* `pip install -r requirements.txt`
+* Modify the `config.json` file with the following data:
   - repository 
   - user 
   - password 
   - CMIS target folder 
-* Run `python cmis_client.py
+* Run `python cmis_connector.py
 
 ## License
 GPL v3.0
 
 ## Author
-surfingtime   
+libremente
 surf {AT} libremente [DOT] eu
  

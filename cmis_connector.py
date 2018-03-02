@@ -1,8 +1,25 @@
+#   CMIS Client connects to a CMIS repo and performs CRUD actions.
+#    Copyright (C) 2018  libremente 
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#   along with this program. If not, see <http://www.gnu.org/licenses/>.
+
 """ Client to connect to a remote CMIS server and perform operations """ 
 # pylint: disable=C0103
 
 # Imports
 from cmislib import CmisClient
+import json
 
 def changeUrl(singleChild): 
     """ Check for a path and update with new one """
@@ -27,12 +44,12 @@ def changeUrl(singleChild):
 def main():
     """ Main function """
     # Read info from file
-    filename = 'local_settings'
+    filename = 'config.json'
 
     # Open file
     try:
         with open(filename) as fileIn:
-            lines = fileIn.readlines()
+            data = json.load(fileIn)
     except EnvironmentError:
         print ("Settings file does not exist!")
         exit(1)
@@ -40,11 +57,10 @@ def main():
     # Set the variables
     # File with 4 lines, info on each.
     try:
-        repository = lines[0].rstrip('\n')
-        user = lines[1].rstrip('\n')
-        password = lines[2].rstrip('\n')
-        # Target folder name
-        folder = lines[3].rstrip('\n')
+        repository = data['repository'] 
+        user = data['user'] 
+        password = data['password'] 
+        folder = data['folder'] 
     except Exception as e:
         print ('Error reading file')
         exit(1)
